@@ -1,49 +1,72 @@
+/* === GLOBAL STYLES === */
+
+/* The universal selector (*) applies these styles to every element on the page. */
 * {
+  /* Resets default browser margins and padding. */
   margin: 0;
   padding: 0;
+  /* `box-sizing: border-box;` ensures padding and borders are included in the element's total width and height, simplifying layout. */
   box-sizing: border-box;
 }
 
+/* Styles for the main body of the document. */
 body {
+  /* Sets a soft, light background color. */
   background: #f5efe6;
+  /* `display: flex;` activates Flexbox for alignment. */
   display: flex;
+  /* Centers content horizontally. */
   justify-content: center;
+  /* Centers content vertically. */
   align-items: center;
+  /* Ensures the body takes up at least the full height of the viewport. */
   min-height: 100vh;
+  /* Adds space around the entire quiz container. */
   padding: 1rem;
+  /* Sets a clean, standard font for all text. */
   font-family: sans-serif;
 }
 
+/* === CONTAINER & SCREEN LAYOUT === */
+
+/* The main container for the quiz content. */
 .container {
   background-color: white;
+  /* Rounds the corners of the container. `1rem` is relative to the root font size. */
   border-radius: 1rem;
+  /* Adds a soft shadow. The `rgba` color has 10% opacity for subtlety. */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
+  /* Prevents the container from becoming too wide on large screens. */
   max-width: 600px;
+  /* Hides any content that overflows the rounded corners. */
   overflow: hidden;
   position: relative;
 }
 
-/* SCREENS */
-
+/* A base style for all screens, setting them to be hidden by default. */
 .screen {
   display: none;
   padding: 2rem;
   text-align: center;
 }
 
+/* The `active` class is added by JavaScript to make a screen visible. */
 .screen.active {
   display: block;
 }
 
-/* START SCREEN */
+/* === QUIZ CONTENT STYLES === */
 
+/* Styles for the heading on the start screen. */
 #start-screen h1 {
   color: #e86a33;
   margin-bottom: 20px;
+  /* `2.5rem` is 2.5 times the size of the root font size. */
   font-size: 2.5rem;
 }
 
+/* Styles for the paragraph text on the start screen. */
 #start-screen p {
   color: #666;
   margin-bottom: 30px;
@@ -61,6 +84,7 @@ body {
   line-height: 1.4;
 }
 
+/* Uses Flexbox to space out the quiz info elements. */
 .quiz-info {
   display: flex;
   justify-content: space-between;
@@ -68,6 +92,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* Uses Flexbox to create a vertical list of answer buttons with a 10px gap. */
 .answers-container {
   display: flex;
   flex-direction: column;
@@ -75,34 +100,42 @@ body {
   margin-bottom: 25px;
 }
 
+/* Styles for all answer buttons. */
 .answer-btn {
   background-color: #f8f0e5;
   color: #333;
+  /* `border` sets the width (`2px`), style (`solid`), and color. */
   border: 2px solid #eadbc8;
   border-radius: 10px;
   padding: 1rem;
+  /* Changes the cursor to a hand to indicate it's clickable. */
   cursor: pointer;
   text-align: left;
+  /* `transition` creates a smooth animation effect for all style changes over 0.3 seconds. */
   transition: all 0.3s ease;
 }
 
+/* `:hover` styles are applied when the mouse hovers over the button. */
 .answer-btn:hover {
   background-color: #eadbc8;
   border-color: #dac0ae;
 }
 
+/* Styles for the correct button, added by JavaScript. */
 .answer-btn.correct {
   background-color: #e6fff0;
   border-color: #a3f0c4;
   color: #28a745;
 }
 
+/* Styles for the incorrect button, also added by JavaScript. */
 .answer-btn.incorrect {
   background-color: #fff0f0;
   border-color: #ffbdbd;
   color: #dc3545;
 }
 
+/* The container for the progress bar. */
 .progress-bar {
   height: 10px;
   background-color: #f8f0e5;
@@ -111,14 +144,16 @@ body {
   margin-top: 20px;
 }
 
+/* The actual progress bar. Its width is controlled by JavaScript. */
 .progress {
   height: 100%;
   background-color: #e86a33;
+  /* Starts with `0%` width. The `transition` property makes its growth appear smooth. */
   width: 0%;
   transition: width 0.3s ease;
 }
 
-/*  RESULT SCREEN */
+/* === RESULT & BUTTON STYLES === */
 
 #result-screen h1 {
   margin-bottom: 30px;
@@ -142,6 +177,7 @@ body {
   color: #e86a33;
 }
 
+/* Styles for the general start and restart buttons. */
 button {
   background-color: #e86a33;
   color: white;
@@ -157,11 +193,11 @@ button:hover {
   background-color: #d45b28;
 }
 
-/* RESPONSIVE DESIGN */
+/* === RESPONSIVE DESIGN === */
 
+/* `@media` is a media query that applies styles only when a condition is met. */
+/* These styles will only take effect on screens that are 500px wide or less. */
 @media (max-width: 500px) {
-  /* WHEN WE HIT 500 PX AND BELOW, IMPLEMENT THE STYLES BELOW */
-
   .screen {
     padding: 1rem;
   }
